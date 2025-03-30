@@ -11,6 +11,7 @@
     <style>
         /* --- CSS Variables --- */
         :root {
+            --raspberry: #E00052;
             --amaranth-purple: #9B1D4B;
             --dark-violet: #8834BC;
             --space-cadet: #1D2139;
@@ -100,7 +101,8 @@
             /* Placeholder background */
             /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800/8834BC/F1F1E0?text=Abstract+Automation+Background') no-repeat center center/cover;  */
             
-            background: linear-gradient(to bottom, var(--space-cadet), var(--beige)); /* Vertical gradient */
+            background: radial-gradient(circle, var(--raspberry) 40%, var(--amaranth-purple) 100%);
+            background-position: center 60%; /* Shift the center downward */
 
 
             /* Or a solid color blend */
@@ -144,8 +146,8 @@
         }
 
         .btn-primary {
-            background-color: var(--amaranth-purple);
-            color: var(--beige);
+            background-color: var(--beige);
+            color: var(--black);
         }
 
         .btn-primary:hover {
