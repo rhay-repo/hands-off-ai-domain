@@ -2,10 +2,489 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>hands-off.ai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hands-Off.ai automates your business processes, saving time and letting your team focus on core tasks.">
+    <title>Hands-Off.ai - Automate Your Business Processes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --amaranth-purple: #9B1D4B;
+            --dark-violet: #8834BC;
+            --beige: #F1F1E0;
+            --black: #000000;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Lato', sans-serif;
+        }
+
+        /* --- Basic Reset & Body Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--beige); /* Default background */
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem; /* Add horizontal padding */
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--black);
+            color: var(--beige);
+            padding: 1rem 0;
+            position: sticky; /* Optional: make header sticky */
+            top: 0;
+            z-index: 100;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--beige); /* Logo text color */
+            text-decoration: none;
+        }
+
+        .logo span { /* Style the .ai part */
+             color: var(--dark-violet); /* Or use --amaranth-purple */
+             font-weight: 600;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        .main-nav ul li a {
+            color: var(--beige);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav ul li a:hover {
+            color: var(--dark-violet);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800/8834BC/F1F1E0?text=Abstract+Automation+Background') no-repeat center center/cover; /* Placeholder background */
+            /* Or a solid color blend */
+            /* background: linear-gradient(45deg, var(--dark-violet), var(--amaranth-purple)); */
+            color: var(--beige);
+            padding: 6rem 0;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: var(--heading-font);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: var(--beige); /* Ensure contrast */
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            color: var(--beige); /* Ensure contrast */
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--amaranth-purple);
+            color: var(--beige);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-violet);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+             background-color: transparent;
+             color: var(--beige);
+             border: 2px solid var(--beige);
+             margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+             background-color: var(--beige);
+             color: var(--amaranth-purple);
+             transform: translateY(-2px);
+        }
+
+        /* --- Content Sections --- */
+        section {
+            padding: 5rem 0;
+            background-color: var(--beige); /* Beige background for content */
+            color: var(--black); /* Black text on beige */
+        }
+
+        section:nth-child(odd):not(.hero) { /* Alternate background slightly if desired */
+            /* background-color: #f8f8f0; /* Slightly different beige */
+        }
+
+        section h2 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            color: var(--amaranth-purple); /* Use primary color for headings */
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* --- Specific Section Styling --- */
+
+        /* Why Automate Section */
+        .why-automate .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .why-automate img { /* Placeholder image */
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .why-automate h3 {
+             color: var(--dark-violet);
+             font-family: var(--heading-font);
+             font-size: 1.5rem;
+             margin-bottom: 0.5rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works ol {
+            list-style: none;
+            counter-reset: steps-counter;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 3rem; /* Space for numbers */
+        }
+
+        .how-it-works li {
+            counter-increment: steps-counter;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 1rem 0 1rem 2rem;
+            border-left: 3px solid var(--dark-violet); /* Vertical line */
+        }
+
+        .how-it-works li::before {
+            content: counter(steps-counter);
+            position: absolute;
+            left: -1.5rem; /* Position number */
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--amaranth-purple);
+            color: var(--beige);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+        }
+
+         .how-it-works h4 {
+             font-family: var(--heading-font);
+             font-size: 1.3rem;
+             margin-bottom: 0.5rem;
+             color: var(--amaranth-purple);
+         }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .benefit-item {
+            background-color: #fff; /* White cards on beige bg */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+         .benefit-item:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 6px 20px rgba(136, 52, 188, 0.2); /* Violet shadow on hover */
+         }
+
+        .benefit-item .icon { /* Placeholder for icons */
+            font-size: 3rem;
+            color: var(--dark-violet);
+            margin-bottom: 1rem;
+            /* Replace with actual icon font or SVG later */
+            display: inline-block; /* Temp styling */
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            background: rgba(136, 52, 188, 0.1);
+            border-radius: 50%;
+        }
+
+        .benefit-item h3 {
+            font-family: var(--heading-font);
+            font-size: 1.3rem;
+            color: var(--amaranth-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            background-color: var(--dark-violet); /* Use a primary color for strong CTA bg */
+            color: var(--beige);
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--beige); /* Heading on dark bg */
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+         /* Use secondary style button appearance on dark bg */
+         .cta .btn-cta {
+             background-color: var(--beige);
+             color: var(--amaranth-purple);
+         }
+         .cta .btn-cta:hover {
+             background-color: #ddd; /* Slightly darker beige */
+             color: var(--dark-violet);
+         }
+
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--black);
+            color: var(--beige);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 0; /* Remove potential gap */
+        }
+
+        .main-footer p {
+            font-size: 0.9rem;
+        }
+
+        .main-footer a {
+             color: var(--dark-violet);
+             text-decoration: none;
+        }
+         .main-footer a:hover {
+             text-decoration: underline;
+         }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+             .hero h1 {
+                 font-size: 2.8rem;
+             }
+             .hero p {
+                 font-size: 1.1rem;
+             }
+             section h2 {
+                 font-size: 2rem;
+             }
+             .main-header .container {
+                 flex-direction: column;
+                 text-align: center;
+             }
+             .main-nav ul {
+                 margin-top: 1rem;
+                 justify-content: center;
+             }
+             .main-nav ul li {
+                 margin: 0 0.8rem;
+             }
+            .why-automate .content {
+                 grid-template-columns: 1fr; /* Stack columns */
+                 text-align: center;
+            }
+             .why-automate .content div:first-child { /* Center text */
+                 margin-bottom: 2rem;
+             }
+            .how-it-works ol {
+                 padding-left: 1rem; /* Adjust padding */
+            }
+            .how-it-works li::before {
+                 left: -1rem; /* Adjust number position */
+                 width: 2rem;
+                 height: 2rem;
+                 font-size: 1rem;
+             }
+             .how-it-works li {
+                 padding-left: 1.5rem;
+             }
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to hands-off.ai</h1>
-    <p>This is a simple page hosted on GitHub Pages.</p>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">Hands-Off<span>.ai</span></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#why-automate">Why Automate?</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#cta">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Take Your Business Processes Hands-Off</h1>
+                <p>Stop wasting valuable time on repetitive tasks. Hands-Off.ai automates your workflows, freeing your team to focus on growth, strategy, and what they do best.</p>
+                <a href="#cta" class="btn btn-primary">Automate Now</a>
+                <a href="#why-automate" class="btn btn-secondary">Learn More</a>
+            </div>
+        </section>
+
+        <section id="why-automate" class="why-automate">
+            <div class="container">
+                <h2>Stop Drowning in Manual Tasks</h2>
+                <div class="content">
+                     <div>
+                        <h3>Is Your Team Bogged Down?</h3>
+                        <p>Manual data entry, repetitive reporting, endless email follow-ups... these tasks consume hours that could be spent on innovation and customer engagement. Errors creep in, productivity drops, and your employees feel burnt out.</p>
+                        <p>It's time to reclaim that time and potential.</p>
+                     </div>
+                     <div>
+                         <img src="https://via.placeholder.com/500x300/F1F1E0/9B1D4B?text=Illustration:+Time+Saved" alt="Illustration showing time savings or streamlined process">
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2>Our Simple Path to Automation</h2>
+                <ol>
+                    <li>
+                        <h4>Discovery & Analysis</h4>
+                        <p>We work with you to identify the most time-consuming and repetitive processes ripe for automation within your business.</p>
+                    </li>
+                    <li>
+                        <h4>Custom Solution Design</h4>
+                        <p>Our experts design tailored AI-powered automation workflows specifically for your needs, integrating seamlessly with your existing tools.</p>
+                    </li>
+                    <li>
+                        <h4>Implementation & Testing</h4>
+                        <p>We implement the solution, rigorously test it to ensure flawless operation, and provide training for your team.</p>
+                    </li>
+                    <li>
+                        <h4>Ongoing Optimization</h4>
+                        <p>Automation isn't set-and-forget. We monitor performance and continuously optimize your workflows for maximum efficiency.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="benefits" class="benefits">
+            <div class="container">
+                <h2>Unlock Your Team's Potential</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="icon">⏳</div> <h3>Save Countless Hours</h3>
+                        <p>Eliminate tedious manual tasks and drastically reduce the time spent on repetitive processes.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon">🎯</div> <h3>Focus on Core Value</h3>
+                        <p>Allow your employees to concentrate on strategic initiatives, creativity, and high-impact work.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon">⚙️</div> <h3>Increase Efficiency</h3>
+                        <p>Streamline workflows, reduce errors, and achieve faster turnaround times across your operations.</p>
+                    </div>
+                     <div class="benefit-item">
+                        <div class="icon">💰</div> <h3>Reduce Costs</h3>
+                        <p>Lower operational costs by minimizing manual labor and improving resource allocation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta">
+            <div class="container">
+                <h2>Ready to Go Hands-Off?</h2>
+                <p>Let's explore how automation can transform your business. Schedule a free consultation today and see the possibilities.</p>
+                <a href="#" class="btn btn-cta">Request a Free Consultation</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Hands-Off.ai. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
 </body>
 </html>
