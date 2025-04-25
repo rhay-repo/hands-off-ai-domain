@@ -1,16 +1,55 @@
-<button onclick="sendWebhook()">Submit to n8n</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>n8n Webhook Form</title>
+  <style>
+    input::placeholder {
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <form id="n8nForm">
+    <label>
+      What industry is this for?
+      <input type="text" name="industry" placeholder="Retail" required>
+    </label><br><br>
 
-<script>
-  function sendWebhook() {
-    fetch('https://abbe-2601-140-8600-630-bc59-a8f3-981f-f0f2.ngrok-free.app/webhook-test/control-panel-trigger', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: 'Hello from the internet!' })
-    })
-    .then(response => response.json())
-    .then(data => console.log('Success:', data))
-    .catch((error) => console.error('Error:', error));
-  }
-</script>
+    <label>
+      What is your expected revenue?
+      <input type="text" name="revenue" placeholder="$" required>
+    </label><br><br>
+
+    <label>
+      What are your expected expenses?
+      <input type="text" name="expenses" placeholder="$" required>
+    </label><br><br>
+
+    <button type="submit">Submit to n8n</button>
+  </form>
+
+  <script>
+    document.getElementById('n8nForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = {
+        industry: this.industry.value,
+        revenue: this.revenue.value,
+        expenses: this.expenses.value
+      };
+
+      fetch('https://abbe-2601-140-8600-630-bc59-a8f3-981f-f0f2.ngrok-free.app/webhook-test/control-panel-trigger', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => console.log('Success:', data))
+      .catch((error) => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
