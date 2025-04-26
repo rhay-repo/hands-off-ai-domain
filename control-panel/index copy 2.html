@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>n8n Webhook Form</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #102a43;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #243b53;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #bcccdc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: #9fb3c8;
+        }
+
+        input[type="text"]:focus {
+            border-color: #627d98;
+            outline: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .checkbox-label {
+            display: inline-block;
+            color: #243b53;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #3e4c59;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #52606d;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Business Insurance Needs</h2>
+        <form id="n8nForm">
+            <div class="form-group">
+                <label for="businessTypes">Business Type(s)</label>
+                <input type="text" id="businessTypes" name="businessTypes" placeholder="e.g., Retail, Consulting, Restaurant" required />
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="liquor" name="liquor" value="1">
+                <label for="liquor" class="checkbox-label">Liquor Liability</label>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="cannabis" name="cannabis" value="1">
+                <label for="cannabis" class="checkbox-label">Cannabis Business</label>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="cyber" name="cyber" value="1">
+                <label for="cyber" class="checkbox-label">Cyber Insurance</label>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="flood" name="flood" value="1">
+                <label for="flood" class="checkbox-label">Flood Insurance</label>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="workersComp" name="workersComp" value="1">
+                <label for="workersComp" class="checkbox-label">Workers' Compensation</label>
+            </div>
+
+            <button type="submit" class="submit-button">Submit to n8n</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('n8nForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = {
+                businessTypes: document.getElementById('businessTypes').value.toLowerCase(),
+                liquor: document.getElementById('liquor').checked ? 1 : 0,
+                cannabis: document.getElementById('cannabis').checked ? 1 : 0,
+                cyber: document.getElementById('cyber').checked ? 1 : 0,
+                flood: document.getElementById('flood').checked ? 1 : 0,
+                workersComp: document.getElementById('workersComp').checked ? 1 : 0
+            };
+
+            fetch('https://abbe-2601-140-8600-630-bc59-a8f3-981f-f0f2.ngrok-free.app/webhook-test/control-panel-trigger', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Data submitted successfully!');
+                    document.getElementById('n8nForm').reset();
+                } else {
+                    alert('There was an error submitting the data.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An unexpected error occurred.');
+            });
+        });
+    </script>
+</body>
+</html>
