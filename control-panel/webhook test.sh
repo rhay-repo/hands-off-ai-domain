@@ -1,1 +1,0 @@
-curl -X POST https://abbe-2601-140-8600-630-bc59-a8f3-981f-f0f2.ngrok-free.app/webhook-test/control-panel-trigger -H "Content-Type: application/json" -d "{\"message\":\"Hello from the internet!\"}"
