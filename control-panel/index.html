@@ -158,9 +158,22 @@
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => {
+            // .then(response => {
+            //     if (response.ok) {
+            //         alert('Data submitted successfully!');
+            //         document.getElementById('n8nForm').reset();
+            //     } else {
+            //         alert('There was an error submitting the data.');
+            //     }
+            // })
+            .then(async (response) => {
                 if (response.ok) {
-                    alert('Data submitted successfully!');
+                    const data = await response.json(); // ⬅️ read the custom message from n8n
+
+                    // Example: if you sent back { responseText: "Hi Reagan..." } or similar
+                    const message = data.responseText || JSON.stringify(data);
+
+                    alert(message); // 🎯 Show the custom message to the user
                     document.getElementById('n8nForm').reset();
                 } else {
                     alert('There was an error submitting the data.');
@@ -169,8 +182,8 @@
             .catch(error => {
                 console.error('Error:', error);
                 alert('An unexpected error occurred.');
-            });
-        });
+            })
+        })
     </script>
 </body>
 </html>
