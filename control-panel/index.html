@@ -178,6 +178,12 @@
     </div>
 
     <script>
+
+        // {~HERE~} Replace with your n8n webhook URL granted by ngrok
+        // const webhook_endpoint_url = 'https://859e-2601-140-8600-630-ec65-2f98-1481-42c7.ngrok-free.app'
+        const webhook_endpoint_url = 'https://control-panel.hands-off.ai'
+        
+
         document.getElementById('n8nForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -196,7 +202,7 @@
                 workersComp: document.getElementById('workersComp').checked ? 1 : 0
             };
 
-            fetch('https://859e-2601-140-8600-630-ec65-2f98-1481-42c7.ngrok-free.app/webhook-test/control-panel-trigger', {
+            fetch(`${webhook_endpoint_url}/webhook-test/control-panel-trigger`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
